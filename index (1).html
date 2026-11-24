@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOVIE MARKAT</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#090909;color:#fff;font-family:Arial,sans-serif}
+header{padding:20px 5%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #333}
+.logo{color:#d6ae59;font-size:25px;font-weight:bold}
+button{background:#d6ae59;color:#111;border:0;padding:10px 15px;border-radius:6px;font-weight:bold;cursor:pointer}
+.hero{padding:65px 6%;text-align:center;background:linear-gradient(130deg,#30220c,#111,#090909)}
+.hero h1{font-size:38px;color:#e2bd70}
+.hero p{color:#bbb}
+input{width:90%;max-width:450px;padding:14px;border-radius:7px;border:1px solid #b18b43;background:#171717;color:white;margin:15px 0}
+section{padding:25px 5%}
+h2{color:#d6ae59}
+.movies{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.movie{background:#191919;border:1px solid #393020;border-radius:10px;padding:20px 12px;text-align:center}
+.poster{height:120px;border-radius:7px;background:linear-gradient(140deg,#6b4b1b,#191919);display:flex;align-items:center;justify-content:center;color:#f0d18d;font-size:20px;font-weight:bold}
+.movie h3{font-size:16px}
+.movie p{color:#aaa;font-size:13px}
+footer{padding:25px;text-align:center;color:#999;border-top:1px solid #333}
+@media(min-width:700px){.movies{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">🎬 MOVIE MARKAT</div>
+ <button onclick="toggleLang()" id="lang">বাংলা</button>
+</header>
+<div class="hero">
+ <h1 id="heading">Discover Your Movies</h1>
+ <p id="sub">Explore Movies, Trailers & Entertainment</p>
+ <input id="search" placeholder="Search your movie..." oninput="filterMovies()">
+</div>
+<section>
+ <h2 id="latest">Latest Movies</h2>
+ <div class="movies" id="movies">
+  <div class="movie"><div class="poster">ACTION</div><h3>Action Movies</h3><p>Action & Adventure</p></div>
+  <div class="movie"><div class="poster">DRAMA</div><h3>Drama Movies</h3><p>Emotional Stories</p></div>
+  <div class="movie"><div class="poster">COMEDY</div><h3>Comedy Movies</h3><p>Fun & Entertainment</p></div>
+  <div class="movie"><div class="poster">THRILLER</div><h3>Thriller Movies</h3><p>Mystery & Suspense</p></div>
+ </div>
+</section>
+<footer><div>© 2026 MOVIE MARKAT</div><p>Made with ❤️ for Movie Lovers</p></footer>
+<script>
+let bengali=false;
+function toggleLang(){
+ bengali=!bengali;
+ document.getElementById("heading").innerText=bengali?"আপনার পছন্দের সিনেমা খুঁজুন":"Discover Your Movies";
+ document.getElementById("sub").innerText=bengali?"সিনেমা, ট্রেলার ও বিনোদন উপভোগ করুন":"Explore Movies, Trailers & Entertainment";
+ document.getElementById("latest").innerText=bengali?"নতুন সিনেমা":"Latest Movies";
+ document.getElementById("lang").innerText=bengali?"English":"বাংলা";
+}
+function filterMovies(){
+ let q=document.getElementById("search").value.toLowerCase();
+ document.querySelectorAll(".movie").forEach(m=>{m.style.display=m.innerText.toLowerCase().includes(q)?"block":"none";});
+}
+</script>
+</body>
+</html>
